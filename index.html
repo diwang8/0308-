@@ -14,7 +14,7 @@
         body {
             font-family: 'Microsoft YaHei', Arial, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 20px;
+            padding: 10px;
             line-height: 1.6;
         }
         
@@ -30,49 +30,49 @@
         .header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 40px;
+            padding: 30px 20px;
             text-align: center;
         }
         
         .header h1 {
-            font-size: 32px;
+            font-size: clamp(20px, 5vw, 32px);
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
         
         .header p {
-            font-size: 16px;
+            font-size: clamp(14px, 3vw, 16px);
             opacity: 0.9;
         }
         
         .content {
-            padding: 40px;
+            padding: 20px;
         }
         
         .info-section {
             background: #f8f9fa;
             border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
+            padding: 15px;
+            margin-bottom: 20px;
             border-left: 5px solid #667eea;
         }
         
         .info-section h2 {
             color: #667eea;
             margin-bottom: 15px;
-            font-size: 24px;
+            font-size: clamp(18px, 4vw, 24px);
         }
         
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
             margin-top: 15px;
         }
         
         .info-item {
             background: white;
-            padding: 15px;
+            padding: 12px;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
@@ -80,29 +80,29 @@
         .info-item label {
             display: block;
             color: #666;
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
             margin-bottom: 5px;
         }
         
         .info-item value {
             display: block;
             color: #333;
-            font-size: 18px;
+            font-size: clamp(14px, 3vw, 18px);
             font-weight: bold;
         }
         
         .scheme-card {
             background: white;
             border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 25px;
+            padding: 20px;
+            margin-bottom: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             border: 2px solid #e0e0e0;
             transition: all 0.3s ease;
         }
         
         .scheme-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
         
@@ -113,15 +113,17 @@
         
         .scheme-header {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             padding-bottom: 15px;
             border-bottom: 2px solid #e0e0e0;
+            gap: 10px;
         }
         
         .scheme-name {
-            font-size: 24px;
+            font-size: clamp(18px, 4vw, 24px);
             font-weight: bold;
             color: #333;
         }
@@ -131,77 +133,86 @@
             color: white;
             padding: 5px 15px;
             border-radius: 20px;
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
+            white-space: nowrap;
         }
         
         .scheme-description {
             color: #666;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-style: italic;
+            font-size: clamp(13px, 2.8vw, 15px);
         }
         
         .price-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
         }
         
         .price-item {
             background: #f8f9fa;
-            padding: 15px;
+            padding: 12px;
             border-radius: 10px;
             text-align: center;
         }
         
         .price-label {
             color: #666;
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
             margin-bottom: 5px;
         }
         
         .price-value {
             color: #667eea;
-            font-size: 28px;
+            font-size: clamp(20px, 5vw, 28px);
             font-weight: bold;
             margin-bottom: 5px;
         }
         
         .sales-value {
             color: #999;
-            font-size: 14px;
+            font-size: clamp(11px, 2.3vw, 14px);
         }
         
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
         }
         
         .metric-item {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 15px;
+            padding: 12px;
             border-radius: 10px;
             text-align: center;
         }
         
         .metric-label {
-            font-size: 12px;
+            font-size: clamp(11px, 2.3vw, 12px);
             opacity: 0.9;
             margin-bottom: 5px;
         }
         
         .metric-value {
-            font-size: 20px;
+            font-size: clamp(16px, 4vw, 20px);
             font-weight: bold;
+        }
+        
+        /* 表格容器 - 支持横向滚动 */
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 15px;
         }
         
         .comparison-table {
             width: 100%;
+            min-width: 500px;
             border-collapse: collapse;
-            margin-top: 20px;
             background: white;
             border-radius: 10px;
             overflow: hidden;
@@ -211,14 +222,16 @@
         .comparison-table th {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 15px;
+            padding: 12px 8px;
             text-align: left;
             font-weight: bold;
+            font-size: clamp(12px, 2.5vw, 14px);
         }
         
         .comparison-table td {
-            padding: 12px 15px;
+            padding: 10px 8px;
             border-bottom: 1px solid #e0e0e0;
+            font-size: clamp(12px, 2.5vw, 14px);
         }
         
         .comparison-table tr:hover {
@@ -232,10 +245,129 @@
         
         .footer {
             background: #f8f9fa;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             color: #666;
-            font-size: 14px;
+            font-size: clamp(12px, 2.5vw, 14px);
+        }
+        
+        .footer p {
+            margin: 5px 0;
+        }
+        
+        /* 平板设备优化 */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .content {
+                padding: 30px;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .price-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* 手机横屏优化 */
+        @media (max-width: 767px) and (orientation: landscape) {
+            body {
+                padding: 5px;
+            }
+            
+            .header {
+                padding: 15px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            .info-section {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+            
+            .scheme-card {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+            
+            .price-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        /* 手机竖屏优化 */
+        @media (max-width: 767px) and (orientation: portrait) {
+            body {
+                padding: 5px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+            
+            .info-section {
+                padding: 12px;
+                margin-bottom: 15px;
+            }
+            
+            .scheme-card {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+            
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .scheme-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .recommended-badge {
+                align-self: flex-start;
+            }
+        }
+        
+        /* 小屏手机优化 */
+        @media (max-width: 360px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -499,60 +631,62 @@
             
             <div class="info-section">
                 <h2>方案对比总表</h2>
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>方案</th>
-                            <th>总销量</th>
-                            <th>预计收入</th>
-                            <th>预计利润</th>
-                            <th>收益率</th>
-                            <th>特点</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="highlight">
-                            <td>方案C(推荐)</td>
-                            <td>150张</td>
-                            <td>73,820元</td>
-                            <td>15,320元</td>
-                            <td>26.19%</td>
-                            <td>收入最高</td>
-                        </tr>
-                        <tr>
-                            <td>方案B</td>
-                            <td>140张</td>
-                            <td>68,850元</td>
-                            <td>10,350元</td>
-                            <td>17.69%</td>
-                            <td>稳健平衡</td>
-                        </tr>
-                        <tr>
-                            <td>方案D</td>
-                            <td>158张</td>
-                            <td>68,600元</td>
-                            <td>10,100元</td>
-                            <td>17.26%</td>
-                            <td>销量最高</td>
-                        </tr>
-                        <tr>
-                            <td>方案A</td>
-                            <td>130张</td>
-                            <td>66,610元</td>
-                            <td>8,110元</td>
-                            <td>13.86%</td>
-                            <td>高端定位</td>
-                        </tr>
-                        <tr>
-                            <td>方案E</td>
-                            <td>138张</td>
-                            <td>66,380元</td>
-                            <td>7,880元</td>
-                            <td>13.47%</td>
-                            <td>价格均衡</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="table-container">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>方案</th>
+                                <th>总销量</th>
+                                <th>预计收入</th>
+                                <th>预计利润</th>
+                                <th>收益率</th>
+                                <th>特点</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="highlight">
+                                <td>方案C(推荐)</td>
+                                <td>150张</td>
+                                <td>73,820元</td>
+                                <td>15,320元</td>
+                                <td>26.19%</td>
+                                <td>收入最高</td>
+                            </tr>
+                            <tr>
+                                <td>方案B</td>
+                                <td>140张</td>
+                                <td>68,850元</td>
+                                <td>10,350元</td>
+                                <td>17.69%</td>
+                                <td>稳健平衡</td>
+                            </tr>
+                            <tr>
+                                <td>方案D</td>
+                                <td>158张</td>
+                                <td>68,600元</td>
+                                <td>10,100元</td>
+                                <td>17.26%</td>
+                                <td>销量最高</td>
+                            </tr>
+                            <tr>
+                                <td>方案A</td>
+                                <td>130张</td>
+                                <td>66,610元</td>
+                                <td>8,110元</td>
+                                <td>13.86%</td>
+                                <td>高端定位</td>
+                            </tr>
+                            <tr>
+                                <td>方案E</td>
+                                <td>138张</td>
+                                <td>66,380元</td>
+                                <td>7,880元</td>
+                                <td>13.47%</td>
+                                <td>价格均衡</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         
