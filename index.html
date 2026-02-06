@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宮崎亚美纱一日店长活动 - 票档价格方案设计</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .info-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .info-section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .info-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .info-item label {
+            display: block;
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .info-item value {
+            display: block;
+            color: #333;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .scheme-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+        
+        .scheme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .scheme-card.recommended {
+            border: 3px solid #667eea;
+            background: linear-gradient(135deg, #f5f7ff 0%, #fff 100%);
+        }
+        
+        .scheme-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .scheme-name {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .recommended-badge {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        
+        .scheme-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .price-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .price-label {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .price-value {
+            color: #667eea;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .sales-value {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .metric-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .metric-label {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .metric-value {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>宮崎亚美纱一日店长活动</h1>
+            <p>票档价格方案设计报告</p>
+        </div>
+        
+        <div class="content">
+            <div class="info-section">
+                <h2>活动基本信息</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>艺人名称</label>
+                        <value>宮崎亚美纱</value>
+                    </div>
+                    <div class="info-item">
+                        <label>活动类型</label>
+                        <value>一日店长</value>
+                    </div>
+                    <div class="info-item">
+                        <label>明星邀请费用</label>
+                        <value>45,000元</value>
+                    </div>
+                    <div class="info-item">
+                        <label>个人杂项费用</label>
+                        <value>12,500元</value>
+                    </div>
+                    <div class="info-item">
+                        <label>推广费用</label>
+                        <value>1,000元</value>
+                    </div>
+                    <div class="info-item">
+                        <label>总成本</label>
+                        <value>58,500元</value>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h2>方案对比</h2>
+                
+                <!-- 方案C: 中档强化型 (推荐) -->
+                <div class="scheme-card recommended">
+                    <div class="scheme-header">
+                        <div class="scheme-name">方案C: 中档强化型</div>
+                        <div class="recommended-badge">推荐方案</div>
+                    </div>
+                    <div class="scheme-description">强化中档票价,吸引主流消费群体,销量较高</div>
+                    <div class="price-grid">
+                        <div class="price-item">
+                            <div class="price-label">高档票价</div>
+                            <div class="price-value">720元</div>
+                            <div class="sales-value">预计销量: 14张</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">中档票价</div>
+                            <div class="price-value">560元</div>
+                            <div class="sales-value">预计销量: 82张</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">低档票价</div>
+                            <div class="price-value">330元</div>
+                            <div class="sales-value">预计销量: 54张</div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-label">总销量</div>
+                            <div class="metric-value">150张</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">预计收入</div>
+                            <div class="metric-value">73,820元</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">预计利润</div>
+                            <div class="metric-value">15,320元</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">收益率</div>
+                            <div class="metric-value">26.19%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 方案B: 高档稳健型 -->
+                <div class="scheme-card">
+                    <div class="scheme-header">
+                        <div class="scheme-name">方案B: 高档稳健型</div>
+                    </div>
+                    <div class="scheme-description">高档价格稳健,整体平衡,销量适中</div>
+                    <div class="price-grid">
+                        <div class="price-item">
+                            <div class="price-label">高档票价</div>
+                            <div class="price-value">750元</div>
+                            <div class="sales-value">预计销量: 14张</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">中档票价</div>
+                            <div class="price-value">540元</div>
+                            <div class="sales-value">预计销量: 75张</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">低档票价</div>
+                            <div class="price-value">350元</div>
+                            <div class="sales-value">预计销量: 51张</div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-label">总销量</div>
+                            <div class="metric-value">140张</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">预计收入</div>
+                            <div class="metric-value">68,850元</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">预计利润</div>
+                            <div class="metric-value">10,350元</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">收益率</div>
+                            <div class="metric-value">17.69%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 方案D: 低档友好型 -->
+                <div class="scheme-card">
+                    <div class="scheme-header">
+                        <div class="scheme-name">方案D: 低档友好型</div>
+                    </div>
+                    <div class="scheme-description">降低入门门槛,扩大受众面,销量最高</div>
+                    <div class="price-grid">
+                        <div class="price-item">
+                            <div class="price-label">高档票价</div>
+                            <div class="price-value">700元</div>
+                            <div class="sales-value">预计销量: 13张</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">中档票价</div>
+                            <div class="price-value">500元</div>
+                            <div class="sales-value">预计销量: 80张</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">低档票价</div>
+                            <div class="price-value">300元</div>
+                            <div class="sales-value">预计销量: 65张</div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-label">总销量</div>
+                            <div class="metric-value">158张</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">预计收入</div>
+                            <div class="metric-value">68,600元</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">预计利润</div>
+                            <div class="metric-value">10,100元</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">收益率</div>
+                            <div class="metric-value">17.26%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 方案A: 高档激进型 -->
+                <div class="scheme-card">
+                    <div class="scheme-header">
+                        <div class="scheme-name">方案A: 高档激进型</div>
+                    </div>
+                    <div class="scheme-description">最大化高档票价,适合高消费群体,总销量相对保守</div>
+                    <div class="price-grid">
+                        <div class="price-item">
+                            <div class="price-label">高档票价</div>
+                            <div class="price-value">800元</div>
+                            <div class="sales-value">预计销量: 13张</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">中档票价</div>
+                            <div class="price-value">560元</div>
+                            <div class="sales-value">预计销量: 68张</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">低档票价</div>
+                            <div class="price-value">370元</div>
+                            <div class="sales-value">预计销量: 49张</div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-label">总销量</div>
+                            <div class="metric-value">130张</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">预计收入</div>
+                            <div class="metric-value">66,610元</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">预计利润</div>
+                            <div class="metric-value">8,110元</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">收益率</div>
+                            <div class="metric-value">13.86%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 方案E: 均衡优化型 -->
+                <div class="scheme-card">
+                    <div class="scheme-header">
+                        <div class="scheme-name">方案E: 均衡优化型</div>
+                    </div>
+                    <div class="scheme-description">价格梯度均衡,兼顾各层次消费者,销量稳健</div>
+                    <div class="price-grid">
+                        <div class="price-item">
+                            <div class="price-label">高档票价</div>
+                            <div class="price-value">770元</div>
+                            <div class="sales-value">预计销量: 13张</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">中档票价</div>
+                            <div class="price-value">530元</div>
+                            <div class="sales-value">预计销量: 73张</div>
+                        </div>
+                        <div class="price-item">
+                            <div class="price-label">低档票价</div>
+                            <div class="price-value">340元</div>
+                            <div class="sales-value">预计销量: 52张</div>
+                        </div>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <div class="metric-label">总销量</div>
+                            <div class="metric-value">138张</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">预计收入</div>
+                            <div class="metric-value">66,380元</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">预计利润</div>
+                            <div class="metric-value">7,880元</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-label">收益率</div>
+                            <div class="metric-value">13.47%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h2>方案对比总表</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>方案</th>
+                            <th>总销量</th>
+                            <th>预计收入</th>
+                            <th>预计利润</th>
+                            <th>收益率</th>
+                            <th>特点</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlight">
+                            <td>方案C(推荐)</td>
+                            <td>150张</td>
+                            <td>73,820元</td>
+                            <td>15,320元</td>
+                            <td>26.19%</td>
+                            <td>收入最高</td>
+                        </tr>
+                        <tr>
+                            <td>方案B</td>
+                            <td>140张</td>
+                            <td>68,850元</td>
+                            <td>10,350元</td>
+                            <td>17.69%</td>
+                            <td>稳健平衡</td>
+                        </tr>
+                        <tr>
+                            <td>方案D</td>
+                            <td>158张</td>
+                            <td>68,600元</td>
+                            <td>10,100元</td>
+                            <td>17.26%</td>
+                            <td>销量最高</td>
+                        </tr>
+                        <tr>
+                            <td>方案A</td>
+                            <td>130张</td>
+                            <td>66,610元</td>
+                            <td>8,110元</td>
+                            <td>13.86%</td>
+                            <td>高端定位</td>
+                        </tr>
+                        <tr>
+                            <td>方案E</td>
+                            <td>138张</td>
+                            <td>66,380元</td>
+                            <td>7,880元</td>
+                            <td>13.47%</td>
+                            <td>价格均衡</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>本报告基于历史数据和价格弹性模型生成,实际执行时可根据市场反馈进行微调</p>
+            <p>生成时间: 2026-02-06</p>
+        </div>
+    </div>
+</body>
+</html>
